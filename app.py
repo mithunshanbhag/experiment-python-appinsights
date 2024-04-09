@@ -4,6 +4,9 @@
 # - OTEL_RESOURCE_ATTRIBUTES
 # - OTEL_SERVICE_NAME
 #
+# Unknowns: 
+# - How to redirect appinsight logs to console too.
+#
 # Resources:
 # - https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable?tabs=aspnetcore
 # - https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/monitor/azure-monitor-opentelemetry/samples/logging
@@ -18,13 +21,12 @@ configure_azure_monitor(
     logger_name="demo_logger",
 )
 
+# If you need to redirect logs to console, you can uncomment the line below
+# basicConfig(filename="app.log")
+
 # Logging calls with this logger will be tracked
 logger = getLogger("demo_logger")
 logger.setLevel(INFO)
-
-#
-# @TODO: logger should log to both console as well as azure appinsights
-#
 
 #
 # demo #1: sending data into appinsights 'traces' table
@@ -52,4 +54,5 @@ try:
 except ZeroDivisionError:
     logger.error("Error: Division by zero", stack_info=True, exc_info=True)
 
+# Note: printf statements are NOT sent to appinsights
 print("the end!")
