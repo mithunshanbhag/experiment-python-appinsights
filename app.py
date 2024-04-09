@@ -1,4 +1,9 @@
 # -------------------------------------------------------------------------
+# Prerequisites: The following three environment variables must be set:
+# - APPLICATIONINSIGHTS_CONNECTION_STRING
+# - OTEL_RESOURCE_ATTRIBUTES
+# - OTEL_SERVICE_NAME
+#
 # Resources:
 # - https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable?tabs=aspnetcore
 # - https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/monitor/azure-monitor-opentelemetry/samples/logging
